@@ -49,11 +49,9 @@ const projectTypeMessages = defineMessages({
   },
 })
 
-type MessageKeys = keyof typeof projectTypeMessages
-
 type ExtractSingulars<K extends string> = K extends `${infer T}s` ? T : never
 
-type ProjectType = ExtractSingulars<MessageKeys>
+type ProjectType = ExtractSingulars<keyof typeof projectTypeMessages>
 
 export function getProjectTypeMessage(type: ProjectType, plural = false) {
   return projectTypeMessages[`${type}${plural ? 's' : ''}`]
