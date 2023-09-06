@@ -16,7 +16,7 @@
             <HistoryIcon /> View history
           </Button>
           <Button v-if="notifications.length > 0" color="danger" @click="readAll()">
-            <CheckCheckIcon /> Mark all as read
+            <CheckCheckIcon /> {{ formatMessage(messages.markAllReadButton) }}
           </Button>
         </template>
       </div>
@@ -54,6 +54,18 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 
 useHead({
   title: 'Notifications - Modrinth',
+})
+
+const vintl = useVIntl()
+const { formatMessage } = vintl
+
+const formatRelativeTime = useRelativeTime()
+
+const messages = defineMessages({
+  markAllReadButton: {
+    id: 'notifications.button.mark-all-read',
+    defaultMessage: 'Mark all as read',
+  },
 })
 
 const auth = await useAuth()

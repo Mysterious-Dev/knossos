@@ -35,6 +35,24 @@
   "notification.error.title": {
     "message": "An error occurred"
   },
+  "notifications.breadcrumbs.history": {
+    "message": "History"
+  },
+  "notifications.breadcrumbs.notifications": {
+    "message": "Notifications"
+  },
+  "notifications.button.mark-all-read": {
+    "message": "Mark all as read"
+  },
+  "notifications.button.view-history": {
+    "message": "View history"
+  },
+  "notifications.header.notification-history": {
+    "message": "Notification history"
+  },
+  "notifications.label.no-notifications": {
+    "message": "You don't have any unread notifications."
+  },
   "profile.button.manage-projects": {
     "message": "Manage projects"
   },
