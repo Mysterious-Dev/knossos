@@ -152,7 +152,12 @@
     </div>
     <span class="notification__date">
       <span v-if="notification.read" class="read-badge"> <ReadIcon /> Read </span>
-      <span v-tooltip="$dayjs(notification.created).format('MMMM D, YYYY [at] h:mm A')">
+      <span v-tooltip="
+        formatMessage(commonMessages.dateAtTimeTooltip, {
+          date: new Date(notification.created),
+          time: new Date(notification.created),
+        })
+      ">
         <CalendarIcon /> Received {{ fromNow(notification.created) }}
       </span>
     </span>
