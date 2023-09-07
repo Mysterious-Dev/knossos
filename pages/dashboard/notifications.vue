@@ -13,7 +13,7 @@
         </div>
         <template v-if="!history">
           <Button v-if="allNotifs && allNotifs.some((notif) => notif.read)" @click="updateRoute()">
-            <HistoryIcon /> View history
+            <HistoryIcon /> {{ formatMessage(messages.viewHistoryButton) }}
           </Button>
           <Button v-if="notifications.length > 0" color="danger" @click="readAll()">
             <CheckCheckIcon /> {{ formatMessage(messages.markAllReadButton) }}
@@ -26,7 +26,7 @@
           v-model="selectedType"
           :items="notifTypes"
           :format-label="
-            (x) => (x === 'all' ? 'All' : $formatProjectType(x).replace('_', ' ') + 's')
+            (x) => (x === 'all' ? formatMessage(commonMessages.allProjectType) : $formatProjectType(x).replace('_', ' ') + 's')
           "
           :capitalize="false"
         />
@@ -40,7 +40,7 @@
           raised
         />
       </template>
-      <p v-else>You don't have any unread notifications.</p>
+      <p v-else>{{ formatMessage(messages.noNotificationsLabel) }}</p>
     </section>
   </div>
 </template>
@@ -62,9 +62,21 @@ const { formatMessage } = vintl
 const formatRelativeTime = useRelativeTime()
 
 const messages = defineMessages({
+  historyBreadcrumbs: {
+    id: 'notifications.breadcrumbs.history',
+    defaultMessage: 'History',
+  },
+  noNotificationsLabel: {
+    id: 'notifications.label.no-notifications',
+    defaultMessage: "You don't have any unread notifications.",
+  },
   markAllReadButton: {
     id: 'notifications.button.mark-all-read',
     defaultMessage: 'Mark all as read',
+  },
+  viewHistoryButton: {
+    id: 'notifications.button.view-history',
+    defaultMessage: 'View history',
   },
 })
 

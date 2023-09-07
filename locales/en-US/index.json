@@ -68,9 +68,6 @@
   "profile.joined-at": {
     "message": "Joined {ago}"
   },
-  "profile.joined-at.tooltip": {
-    "message": "{date, date, long} at {time, time, short}"
-  },
   "profile.label.edit-bio": {
     "message": "Bio"
   },
@@ -181,5 +178,8 @@
   },
   "settings.language.title": {
     "message": "Language"
+  },
+  "tooltip.date_at_time": {
+    "message": "{date, date, long} at {time, time, short}"
   }
 }

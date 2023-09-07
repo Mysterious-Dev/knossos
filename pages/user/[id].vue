@@ -143,7 +143,7 @@
               <SunriseIcon class="secondary-stat__icon" aria-hidden="true" />
               <span
                 v-tooltip="
-                  formatMessage(messages.profileJoinedAtTooltip, {
+                  formatMessage(commonMessages.dateAtTimeTooltip, {
                     date: new Date(user.created),
                     time: new Date(user.created),
                   })
@@ -325,10 +325,6 @@ const messages = defineMessages({
   profileJoinedAt: {
     id: 'profile.joined-at',
     defaultMessage: 'Joined {ago}',
-  },
-  profileJoinedAtTooltip: {
-    id: 'profile.joined-at.tooltip',
-    defaultMessage: '{date, date, long} at {time, time, short}',
   },
   profileUserId: {
     id: 'profile.user-id',
