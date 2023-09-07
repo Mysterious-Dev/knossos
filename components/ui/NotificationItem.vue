@@ -134,7 +134,10 @@
             {{ $formatVersion(notif.extra_data.version.game_versions) }}
             <span
               v-tooltip="
-                $dayjs(notif.extra_data.version.date_published).format('MMMM D, YYYY [at] h:mm A')
+                formatMessage(commonMessages.dateAtTimeTooltip, {
+                  date: new Date(notif.extra_data.version.date_published),
+                  time: new Date(notif.extra_data.version.date_published),
+                })
               "
               class="date"
             >
@@ -285,6 +288,9 @@ import Categories from '~/components/ui/search/Categories.vue'
 
 const app = useNuxtApp()
 const emit = defineEmits(['update:notifications'])
+
+const vintl = useVIntl()
+const { formatMessage } = vintl
 
 const props = defineProps({
   notification: {
