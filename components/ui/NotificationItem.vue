@@ -382,7 +382,7 @@ async function performAction(notification, actionIndex) {
   } catch (err) {
     app.$notify({
       group: 'main',
-      title: 'An error occurred',
+      title: formatMessage(commonMessages.errorNotificationTitle),
       text: err.data.description,
       type: 'error',
     })
