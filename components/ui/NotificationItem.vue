@@ -37,9 +37,16 @@
     </DoubleIcon>
     <div class="notification__title">
       <template v-if="type === 'project_update' && project && version">
-        A project you follow,
-        <nuxt-link :to="getProjectLink(project)" class="title-link">{{ project.title }}</nuxt-link
-        >, has been updated:
+        <IntlFormatted
+          :message-id="messages.titleNotificationItemComponent"
+          :values="{ project_title: project.title }"
+        >
+          <template #link="{ children }">
+            <nuxt-link :to="getProjectLink(project)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
+          </template>
+        </IntlFormatted>
       </template>
       <template v-else-if="type === 'team_invite' && project">
         <nuxt-link :to="`/user/${invitedBy.username}`" class="iconified-link title-link">
@@ -296,6 +303,13 @@ const emit = defineEmits(['update:notifications'])
 
 const vintl = useVIntl()
 const { formatMessage } = vintl
+
+const messages = defineMessages({
+  titleNotificationItemComponent: {
+    id: 'component.notification-item.title',
+    defaultMessage: 'A project you follow <link>{project_title}</link>, has been updated:',
+  }
+})
 
 const props = defineProps({
   notification: {
