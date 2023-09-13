@@ -8,11 +8,11 @@
   "button.save": {
     "message": "Save"
   },
-  "component.notification-item.button.mark-read": {
-    "message": "Mark as read"
-  },
   "component.notification-item.button.open-link": {
     "message": "Open link"
+  },
+  "component.notification-item.label.mark-read": {
+    "message": "Mark as read"
   },
   "component.notification-item.title": {
     "message": "A project you follow <link>{project_title}</link>, has been updated lol:"

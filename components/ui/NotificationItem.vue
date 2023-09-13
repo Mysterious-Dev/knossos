@@ -38,7 +38,7 @@
     <div class="notification__title">
       <template v-if="type === 'project_update' && project && version">
         <IntlFormatted
-          :message-id="messages.titleNotificationItemComponent"
+          :message-id="messages.title"
           :values="{ project_title: project.title }"
         >
           <template #link="{ children }">
@@ -197,7 +197,7 @@
       </template>
       <button
         v-else-if="!notification.read"
-        v-tooltip="`Mark as read`"
+        v-tooltip="formatMessage(messages.markReadLabel)"
         class="iconified-button square-button button-transparent"
         @click="read()"
       >
@@ -236,7 +236,7 @@
           :class="{ 'raised-button': raised }"
           @click="read()"
         >
-          <CheckIcon /> Mark as read
+          <CheckIcon /> {{ formatMessage(messages.markReadLabel) }}
         </button>
         <CopyCode v-if="cosmetics.developerMode" :text="notification.id" />
       </div>
@@ -249,7 +249,7 @@
           target="_blank"
         >
           <ExternalIcon />
-          Open link
+          {{ formatMessage(messages.openLinkButton) }}
         </nuxt-link>
         <button
           v-for="(action, actionIndex) in notification.actions"
@@ -268,7 +268,7 @@
           :class="{ 'raised-button': raised }"
           @click="performAction(notification, null)"
         >
-          <CheckIcon /> Mark as read
+          <CheckIcon /> {{ formatMessage(messages.markReadLabel) }}
         </button>
         <CopyCode v-if="cosmetics.developerMode" :text="notification.id" />
       </div>
@@ -305,7 +305,15 @@ const vintl = useVIntl()
 const { formatMessage } = vintl
 
 const messages = defineMessages({
-  titleNotificationItemComponent: {
+  markReadLabel: {
+    id: 'component.notification-item.label.mark-read',
+    defaultMessage: 'Mark as read',
+  },
+  openLinkButton: {
+    id: 'component.notification-item.button.open-link',
+    defaultMessage: 'Open link',
+  },
+  title: {
     id: 'component.notification-item.title',
     defaultMessage: 'A project you follow <link>{project_title}</link>, has been updated:',
   }
