@@ -38,7 +38,7 @@
     <div class="notification__title">
       <template v-if="type === 'project_update' && project && version">
         <IntlFormatted
-          :message-id="messages.title"
+          :message-id="messages.componentTitle"
           :values="{ project_title: project.title }"
         >
           <template #link="{ children }">
@@ -313,7 +313,7 @@ const messages = defineMessages({
     id: 'component.notification-item.button.open-link',
     defaultMessage: 'Open link',
   },
-  title: {
+  componentTitle: {
     id: 'component.notification-item.title',
     defaultMessage: 'A project you follow <link>{project_title}</link>, has been updated:',
   }
