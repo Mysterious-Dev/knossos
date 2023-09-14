@@ -1,6 +1,12 @@
 {
+  "button.accept": {
+    "message": "Accept"
+  },
   "button.cancel": {
     "message": "Cancel"
+  },
+  "button.decline": {
+    "message": "Decline"
   },
   "button.edit": {
     "message": "Edit"

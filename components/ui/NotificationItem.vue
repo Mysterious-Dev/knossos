@@ -171,7 +171,7 @@
     <div v-if="compact" class="notification__actions">
       <template v-if="type === 'team_invite'">
         <button
-          v-tooltip="`Accept`"
+          v-tooltip="formatMessage(commonMessages.acceptButton)"
           class="iconified-button square-button brand-button button-transparent"
           @click="
             () => {
@@ -183,7 +183,7 @@
           <CheckIcon />
         </button>
         <button
-          v-tooltip="`Decline`"
+          v-tooltip="formatMessage(commonMessages.declineButton)"
           class="iconified-button square-button danger-button button-transparent"
           @click="
             () => {
@@ -216,7 +216,7 @@
               }
             "
           >
-            <CheckIcon /> Accept
+            <CheckIcon /> {{ formatMessage(commonMessages.acceptButton) }}
           </button>
           <button
             class="iconified-button danger-button"
@@ -227,7 +227,7 @@
               }
             "
           >
-            <CrossIcon /> Decline
+            <CrossIcon /> {{ formatMessage(commonMessages.declineButton) }}
           </button>
         </template>
         <button

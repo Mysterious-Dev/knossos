@@ -1,4 +1,8 @@
 export const commonMessages = defineMessages({
+  acceptButton: {
+    id: 'button.accept',
+    defaultMessage: 'Accept',
+  },
   allProjectType: {
     id: 'project-type.all',
     defaultMessage: 'All',
@@ -6,6 +10,10 @@ export const commonMessages = defineMessages({
   cancelButton: {
     id: 'button.cancel',
     defaultMessage: 'Cancel',
+  },
+  declineButton: {
+    id: 'button.decline',
+    defaultMessage: 'Decline',
   },
   dateAtTimeTooltip: {
     id: 'tooltip.date_at_time',
