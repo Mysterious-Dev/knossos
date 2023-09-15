@@ -20,6 +20,9 @@
   "component.notification-item.label.mark-read": {
     "message": "Mark as read"
   },
+  "component.notification-item.label.moderator-message": {
+    "message": "Your project, <link>{project_title}</link>, has received {count, plural, one {a message} other {messages}} from the moderators."
+  },
   "component.notification-item.title": {
     "message": "A project you follow <link>{project_title}</link>, has been updated lol:"
   },
