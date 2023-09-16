@@ -70,7 +70,12 @@
       <template v-else-if="type === 'status_change' && project">
         <IntlFormatted
           :message-id="
-            messages[`component.notification-item.label.status-change${tags.rejectedStatuses.includes(notification.body.new_status) ? '.rejected' : ''}`]
+            messages[
+              `component.notification-item.label.status-change${
+                tags.rejectedStatuses.includes(notification.body.new_status) ? '.rejected' : ''
+              }
+              `
+            ]
           "
           :values="{ project_title: project.title }"
         >
@@ -92,7 +97,7 @@
           :message-id="messages.moderationMessageLabel"
           :values="{
             project_title: project.title,
-            count: 1 + notification.grouped_notifs.length
+            count: 1 + notification.grouped_notifs.length,
           }"
         >
           <template #link="{ children }">
@@ -177,12 +182,14 @@
     </div>
     <span class="notification__date">
       <span v-if="notification.read" class="read-badge"> <ReadIcon /> Read </span>
-      <span v-tooltip="
-        formatMessage(commonMessages.dateAtTimeTooltip, {
-          date: new Date(notification.created),
-          time: new Date(notification.created),
-        })
-      ">
+      <span
+        v-tooltip="
+          formatMessage(commonMessages.dateAtTimeTooltip, {
+            date: new Date(notification.created),
+            time: new Date(notification.created),
+          })
+        "
+      >
         <CalendarIcon /> Received {{ fromNow(notification.created) }}
       </span>
     </span>
@@ -337,7 +344,8 @@ const messages = defineMessages({
   },
   moderationMessageLabel: {
     id: 'component.notification-item.label.moderator-message',
-    defaultMessage: 'Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators.',
+    defaultMessage:
+      'Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators.',
   },
   teamInviteLabel: {
     id: 'component.notification-item.label.team-invite',

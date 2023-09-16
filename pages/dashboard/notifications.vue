@@ -26,7 +26,10 @@
           v-model="selectedType"
           :items="notifTypes"
           :format-label="
-            (x) => (x === 'all' ? formatMessage(commonMessages.allProjectType) : $formatProjectType(x).replace('_', ' ') + 's')
+            (x) => (
+              x === 'all'
+              ? formatMessage(commonMessages.allProjectType)
+              : $formatProjectType(x).replace('_', ' ') + 's')
           "
           :capitalize="false"
         />
@@ -58,8 +61,6 @@ useHead({
 
 const vintl = useVIntl()
 const { formatMessage } = vintl
-
-const formatRelativeTime = useRelativeTime()
 
 const messages = defineMessages({
   historyBreadcrumbs: {
