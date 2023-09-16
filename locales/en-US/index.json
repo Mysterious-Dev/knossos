@@ -23,6 +23,12 @@
   "component.notification-item.label.moderator-message": {
     "message": "Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators."
   },
+  "component.notification-item.label.status-change": {
+    "message": "<link>{project_title}</link> updated from {old_status} to {new_status} by the moderators."
+  },
+  "component.notification-item.label.status-change.rejected": {
+    "message": "<link>{project_title}</link> has been {new_status} by the moderators."
+  },
   "component.notification-item.label.team-invite": {
     "message": "{user} has invited you to join <link>{project_title}</link>."
   },

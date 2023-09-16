@@ -68,19 +68,24 @@
         </IntlFormatted>
       </template>
       <template v-else-if="type === 'status_change' && project">
-        <nuxt-link :to="getProjectLink(project)" class="title-link">
-          {{ project.title }}
-        </nuxt-link>
-        <template v-if="tags.rejectedStatuses.includes(notification.body.new_status)">
-          has been <Badge :type="notification.body.new_status" />
-        </template>
-        <template v-else>
-          updated from
-          <Badge :type="notification.body.old_status" />
-          to
-          <Badge :type="notification.body.new_status" />
-        </template>
-        by the moderators.
+        <IntlFormatted
+          :message-id="
+            messages[`component.notification-item.label.status-change${tags.rejectedStatuses.includes(notification.body.new_status) ? '.rejected' : ''}`]
+          "
+          :values="{ project_title: project.title }"
+        >
+          <template #link="{ children }">
+            <nuxt-link :to="getProjectLink(project)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
+          </template>
+          <template #~old_status>
+            <Badge :type="notification.body.old_status" />
+          </template>
+          <template #~new_status>
+            <Badge :type="notification.body.new_status" />
+          </template>
+        </IntlFormatted>
       </template>
       <template v-else-if="type === 'moderator_message' && thread && project && !report">
         <IntlFormatted
