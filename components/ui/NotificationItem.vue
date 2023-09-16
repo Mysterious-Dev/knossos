@@ -49,17 +49,23 @@
         </IntlFormatted>
       </template>
       <template v-else-if="type === 'team_invite' && project">
-        <nuxt-link :to="`/user/${invitedBy.username}`" class="iconified-link title-link">
-          <Avatar :src="invitedBy.avatar_url" circle size="xxs" no-shadow :raised="raised" />
-          <span class="space">&nbsp;</span>
-          <span>{{ invitedBy.username }}</span>
-        </nuxt-link>
-        <span>
-          has invited you to join
-          <nuxt-link :to="getProjectLink(project)" class="title-link">
-            {{ project.title }} </nuxt-link
-          >.
-        </span>
+        <IntlFormatted
+          :message-id="messages.teamInviteLabel"
+          :values="{ project_title: project.title }"
+        >
+          <template #link="{ children }">
+            <nuxt-link :to="getProjectLink(project)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
+          </template>
+          <template #~user>
+            <nuxt-link :to="`/user/${invitedBy.username}`" class="iconified-link title-link">
+              <Avatar :src="invitedBy.avatar_url" circle size="xxs" no-shadow :raised="raised" />
+              <span class="space">&nbsp;</span>
+              <span>{{ invitedBy.username }}</span>
+            </nuxt-link>
+          </template>
+        </IntlFormatted>
       </template>
       <template v-else-if="type === 'status_change' && project">
         <nuxt-link :to="getProjectLink(project)" class="title-link">
@@ -327,6 +333,10 @@ const messages = defineMessages({
   moderationMessageLabel: {
     id: 'component.notification-item.label.moderator-message',
     defaultMessage: 'Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators.',
+  },
+  teamInviteLabel: {
+    id: 'component.notification-item.label.team-invite',
+    defaultMessage: '{user} has invited you to join <link>{project_title}</link>.',
   },
 })
 
