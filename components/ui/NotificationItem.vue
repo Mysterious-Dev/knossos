@@ -77,12 +77,19 @@
         by the moderators.
       </template>
       <template v-else-if="type === 'moderator_message' && thread && project && !report">
-        Your project,
-        <nuxt-link :to="getProjectLink(project)" class="title-link">{{ project.title }}</nuxt-link
-        >, has received
-        <template v-if="notification.grouped_notifs"> messages </template>
-        <template v-else>a message</template>
-        from the moderators.
+        <IntlFormatted
+          :message-id="messages.moderationMessageLabel"
+          :values="{
+            project_title: project.title,
+            count: 1 + notification.grouped_notifs.length
+          }"
+        >
+          <template #link="{ children }">
+            <nuxt-link :to="getProjectLink(project)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
+          </template>
+        </IntlFormatted>
       </template>
       <template v-else-if="type === 'moderator_message' && thread && report">
         A moderator replied to your report of
@@ -316,7 +323,11 @@ const messages = defineMessages({
   componentTitle: {
     id: 'component.notification-item.title',
     defaultMessage: 'A project you follow <link>{project_title}</link>, has been updated:',
-  }
+  },
+  moderationMessageLabel: {
+    id: 'component.notification-item.label.moderator-message',
+    defaultMessage: 'Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators.',
+  },
 })
 
 const props = defineProps({
