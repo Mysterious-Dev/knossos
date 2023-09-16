@@ -26,10 +26,10 @@
           v-model="selectedType"
           :items="notifTypes"
           :format-label="
-            (x) => (
+            (x) =>
               x === 'all'
-              ? formatMessage(commonMessages.allProjectType)
-              : $formatProjectType(x).replace('_', ' ') + 's')
+                ? formatMessage(commonMessages.allProjectType)
+                : $formatProjectType(x).replace('_', ' ') + 's'
           "
           :capitalize="false"
         />
