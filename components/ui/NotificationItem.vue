@@ -111,10 +111,15 @@
         <IntlFormatted
           :message-id="
             messages[
-              `component.notification-item.label.moderator-message${
-                tags.rejectedStatuses.includes(notification.body.new_status) ? '.rejected' : ''
-              }
-              `
+              `${
+                version
+                  ? 'version'
+                  : project
+                    ? 'project'
+                    : user
+                      ? 'user'
+                      : ''
+              }ReportModerationMessageLabel`
             ]
           "
           :values="{
@@ -128,11 +133,15 @@
               <component :is="() => normalizeChildren(children)" />
             </nuxt-link>
           </template>
-          <template #~old_status>
-            <Badge :type="notification.body.old_status" />
+          <template #user_link="{ children }">
+            <nuxt-link :to="getUserLink(user)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
           </template>
-          <template #~new_status>
-            <Badge :type="notification.body.new_status" />
+          <template #version_link="{ children }">
+            <nuxt-link :to="getVersionLink(project, version)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
           </template>
         </IntlFormatted>
         A moderator replied to your report of
@@ -373,6 +382,18 @@ const messages = defineMessages({
     id: 'component.notification-item.label.moderator-message',
     defaultMessage:
       'Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators.',
+  },
+  projectReportModerationMessageLabel: {
+    id: 'component.notification-item.label.moderator-message.project-report',
+    defaultMessage: 'A moderator replied to your report of <project_link>{project_title}</project_link>.',
+  },
+  userReportModerationMessageLabel: {
+    id: 'component.notification-item.label.moderator-message.user-report',
+    defaultMessage: 'A moderator replied to your report of <user_link>{username}</user_link>.',
+  },
+  versionReportModerationMessageLabel: {
+    id: 'component.notification-item.label.moderator-message.version-report',
+    defaultMessage: 'A moderator replied to your report of version <version_link>{version_name}</version_link> of project <project_link>{project_title}</project_link>.',
   },
   teamInviteLabel: {
     id: 'component.notification-item.label.team-invite',
