@@ -108,6 +108,33 @@
         </IntlFormatted>
       </template>
       <template v-else-if="type === 'moderator_message' && thread && report">
+        <IntlFormatted
+          :message-id="
+            messages[
+              `component.notification-item.label.moderator-message${
+                tags.rejectedStatuses.includes(notification.body.new_status) ? '.rejected' : ''
+              }
+              `
+            ]
+          "
+          :values="{
+            project_title: project.title,
+            username: user.username,
+            version_name: version.name,
+          }"
+        >
+          <template #project_link="{ children }">
+            <nuxt-link :to="getProjectLink(project)" class="title-link">
+              <component :is="() => normalizeChildren(children)" />
+            </nuxt-link>
+          </template>
+          <template #~old_status>
+            <Badge :type="notification.body.old_status" />
+          </template>
+          <template #~new_status>
+            <Badge :type="notification.body.new_status" />
+          </template>
+        </IntlFormatted>
         A moderator replied to your report of
         <template v-if="version">
           version

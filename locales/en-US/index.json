@@ -23,6 +23,15 @@
   "component.notification-item.label.moderator-message": {
     "message": "Your project, <link>{project_title}</link>, has received {count, plural, =1 {a message} other {messages}} from the moderators."
   },
+  "component.notification-item.label.moderator-message.project-report": {
+    "message": "A moderator replied to your report of <project_link>{project_title}</project_link>."
+  },
+  "component.notification-item.label.moderator-message.user-report": {
+    "message": "A moderator replied to your report of <user_link>{username}</user_link>."
+  },
+  "component.notification-item.label.moderator-message.version-report": {
+    "message": "A moderator replied to your report of version <version_link>{version_name}</version_link> of project <project_link>{project_title}</project_link>."
+  },
   "component.notification-item.label.status-change": {
     "message": "<link>{project_title}</link> updated from {old_status} to {new_status} by the moderators."
   },
