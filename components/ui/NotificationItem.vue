@@ -109,19 +109,7 @@
       </template>
       <template v-else-if="type === 'moderator_message' && thread && report">
         <IntlFormatted
-          :message-id="
-            messages[
-              `${
-                version
-                  ? 'version'
-                  : project
-                    ? 'project'
-                    : user
-                      ? 'user'
-                      : ''
-              }ReportModerationMessageLabel`
-            ]
-          "
+          :message-id="getModeratorMessage()"
           :values="{
             project_title: project.title,
             username: user.username,
@@ -507,6 +495,16 @@ function getMessages() {
     }
   }
   return messages
+}
+
+function getModeratorMessage() {
+  if(version) {
+    return messages["versionReportModerationMessageLabel"]
+  }else if(project){
+    return messages["projectReportModerationMessageLabel"]
+  }else {
+    return messages["userReportModerationMessageLabel"]
+  }
 }
 </script>
 
