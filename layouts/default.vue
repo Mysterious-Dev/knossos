@@ -214,7 +214,7 @@
           </div>
         </div>
         <div class="mobile-navbar" :class="{ expanded: isBrowseMenuOpen || isMobileMenuOpen }">
-          <NuxtLink to="/" class="tab button-animation" title="Home">
+          <NuxtLink to="/" class="tab button-animation" aria-label="Modrinth home page" title="Home">
             <HomeIcon />
           </NuxtLink>
           <button
