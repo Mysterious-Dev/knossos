@@ -188,7 +188,7 @@
   "settings.pats.title": {
     "message": "Personal Access Tokens"
   },
-  "settings.pats.title-short": {
+  "settings.pats.short-title": {
     "message": "PATs"
   },
   "settings.sessions.button.revoke-session": {
