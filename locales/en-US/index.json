@@ -170,6 +170,18 @@
   "settings.pats.button.revoke-token": {
     "message": "Revoke token"
   },
+  "settings.pats.label.created-at": {
+    "message": "Created {ago}"
+  },
+  "settings.pats.label.expired-at": {
+    "message": "Expired {ago}"
+  },
+  "settings.pats.label.expires-at": {
+    "message": "Expires {ago}"
+  },
+  "settings.pats.label.last-used-at": {
+    "message": "Last used {ago}"
+  },
   "settings.pats.label.never-used": {
     "message": "Never used"
   },
