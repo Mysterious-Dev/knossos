@@ -111,14 +111,28 @@
               <template v-else>Never used</template>
             </span>
             ⋅
-            <span v-tooltip="$dayjs(pat.expires).format('MMMM D, YYYY [at] h:mm A')">
+            <span
+              v-tooltip="
+                formatMessage(commonMessages.dateAtTimeTooltip, {
+                  date: new Date(pat.expires),
+                  time: new Date(pat.expires),
+                })
+              "
+            >
               <template v-if="new Date(pat.expires) > new Date()">
                 Expires {{ fromNow(pat.expires) }}
               </template>
               <template v-else> Expired {{ fromNow(pat.expires) }} </template>
             </span>
             ⋅
-            <span v-tooltip="$dayjs(pat.created).format('MMMM D, YYYY [at] h:mm A')">
+            <span
+              v-tooltip="
+                formatMessage(commonMessages.dateAtTimeTooltip, {
+                  date: new Date(pat.created),
+                  time: new Date(pat.created),
+                })
+              "
+            >
               Created {{ fromNow(pat.created) }}
             </span>
           </template>

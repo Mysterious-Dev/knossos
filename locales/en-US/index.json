@@ -161,6 +161,24 @@
   "settings.language.title": {
     "message": "Language"
   },
+  "settings.pats.button.create-pat": {
+    "message": "Create a PAT"
+  },
+  "settings.pats.button.edit-token": {
+    "message": "Edit token"
+  },
+  "settings.pats.button.revoke-token": {
+    "message": "Revoke token"
+  },
+  "settings.pats.label.never-used": {
+    "message": "Never used"
+  },
+  "settings.pats.title": {
+    "message": "Personal Access Tokens"
+  },
+  "settings.pats.title-short": {
+    "message": "PATs"
+  },
   "settings.sessions.button.revoke-session": {
     "message": "Revoke session"
   },
