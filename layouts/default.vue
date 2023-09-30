@@ -399,6 +399,8 @@ useHead({
   ],
 })
 
+const { formatMessage } = useVIntl()
+
 const description =
   'Download Minecraft mods, plugins, datapacks, shaders, resourcepacks, and modpacks on Modrinth. ' +
   'Discover and publish projects on Modrinth with a modern, easy to use interface and API.'
@@ -468,27 +470,27 @@ export default defineNuxtComponent({
       hideDropdown: false,
       navRoutes: [
         {
-          label: 'Mods',
+          label: formatMessage(getProjectTypeMessage("mods", false)),
           href: '/mods',
         },
         {
-          label: 'Plugins',
+          label: formatMessage(getProjectTypeMessage("plugins", false)),
           href: '/plugins',
         },
         {
-          label: 'Data Packs',
+          label: formatMessage(getProjectTypeMessage("datapacks", false)),
           href: '/datapacks',
         },
         {
-          label: 'Shaders',
+          label: formatMessage(getProjectTypeMessage("shaders", false)),
           href: '/shaders',
         },
         {
-          label: 'Resource Packs',
+          label: formatMessage(getProjectTypeMessage("resourcepacks", false)),
           href: '/resourcepacks',
         },
         {
-          label: 'Modpacks',
+          label: formatMessage(getProjectTypeMessage("modpacks", false)),
           href: '/modpacks',
         },
       ],
