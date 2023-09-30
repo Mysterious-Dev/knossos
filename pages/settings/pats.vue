@@ -70,7 +70,7 @@
 
     <div class="header__row">
       <div class="header__title">
-        <h2>Personal Access Tokens</h2>
+        <h2>{{ formatMessage(messages.patsTitle) }}</h2>
       </div>
       <button
         class="btn btn-primary"
@@ -84,7 +84,7 @@
           }
         "
       >
-        <PlusIcon /> Create a PAT
+        <PlusIcon /> {{ formatMessage(messages.createPatButton) }}
       </button>
     </div>
     <p>
@@ -151,7 +151,7 @@
             }
           "
         >
-          <EditIcon /> Edit token
+          <EditIcon /> {{ formatMessage(messages.editTokenButton) }}
         </button>
         <button
           class="iconified-button raised-button"
@@ -162,7 +162,7 @@
             }
           "
         >
-          <TrashIcon /> Revoke token
+          <TrashIcon /> {{ formatMessage(messages.revokeTokenButton) }}
         </button>
       </div>
     </div>
@@ -183,6 +183,32 @@ import CopyCode from '~/components/ui/CopyCode.vue'
 
 definePageMeta({
   middleware: 'auth',
+})
+
+const { formatMessage } = useVIntl()
+const formatRelativeTime = useRelativeTime()
+
+const messages = defineMessages({
+  createPatButton: {
+    id: 'settings.pats.button.create-pat',
+    defaultMessage: 'Create a PAT',
+  },
+  editTokenButton: {
+    id: 'settings.pats.button.edit-token',
+    defaultMessage: 'Edit token',
+  },
+  revokeTokenButton: {
+    id: 'settings.pats.button.revoke-token',
+    defaultMessage: 'Revoke token',
+  },
+  patsTitle: {
+    id: 'settings.pats.title',
+    defaultMessage: 'Personal Access Tokens',
+  },
+  patsShortTitle: {
+    id: 'settings.pats.short-title',
+    defaultMessage: 'PATs',
+  },
 })
 
 useHead({
