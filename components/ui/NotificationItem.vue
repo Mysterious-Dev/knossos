@@ -108,30 +108,6 @@
         </IntlFormatted>
       </template>
       <template v-else-if="type === 'moderator_message' && thread && report">
-        <IntlFormatted
-          :message-id="getModeratorMessage()"
-          :values="{
-            project_title: project.title,
-            username: user.username,
-            version_name: version.name,
-          }"
-        >
-          <template #project_link="{ children }">
-            <nuxt-link :to="getProjectLink(project)" class="title-link">
-              <component :is="() => normalizeChildren(children)" />
-            </nuxt-link>
-          </template>
-          <template #user_link="{ children }">
-            <nuxt-link :to="getUserLink(user)" class="title-link">
-              <component :is="() => normalizeChildren(children)" />
-            </nuxt-link>
-          </template>
-          <template #version_link="{ children }">
-            <nuxt-link :to="getVersionLink(project, version)" class="title-link">
-              <component :is="() => normalizeChildren(children)" />
-            </nuxt-link>
-          </template>
-        </IntlFormatted>
         A moderator replied to your report of
         <template v-if="version">
           version
@@ -495,16 +471,6 @@ function getMessages() {
     }
   }
   return messages
-}
-
-function getModeratorMessage() {
-  if(version) {
-    return messages["versionReportModerationMessageLabel"]
-  }else if(project){
-    return messages["projectReportModerationMessageLabel"]
-  }else {
-    return messages["userReportModerationMessageLabel"]
-  }
 }
 </script>
 
