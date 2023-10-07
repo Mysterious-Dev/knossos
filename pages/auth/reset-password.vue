@@ -19,6 +19,7 @@
             autocomplete="username"
             class="auth-form__input"
             placeholder="Email"
+            @keyup.enter="recovery"
           />
         </div>
 
@@ -39,6 +40,7 @@
             autocomplete="new-password"
             class="auth-form__input"
             placeholder="Password"
+            @keyup.enter="changePassword"
           />
         </div>
 
@@ -52,6 +54,7 @@
             autocomplete="new-password"
             class="auth-form__input"
             placeholder="Confirm password"
+            @keyup.enter="changePassword"
           />
         </div>
 
