@@ -18,17 +18,17 @@
     >
       <button class="iconified-button" @click="userUnfollowProject(project)">
         <HeartIcon />
-        Unfollow
+        {{ formatMessage(messages.unfollowButton) }}
       </button>
     </ProjectCard>
   </div>
   <div v-else class="error">
     <FollowIllustration class="icon" />
     <br />
-    <span class="text"
-      >You don't have any followed projects. <br />
-      Why don't you <nuxt-link class="link" to="/mods">search</nuxt-link> for new ones?</span
-    >
+    <span class="text">
+      You don't have any followed projects. <br />
+      Why don't you <nuxt-link class="link" to="/mods">search</nuxt-link> for new ones?
+    </span>
   </div>
 </template>
 
@@ -37,6 +37,15 @@ import ProjectCard from '~/components/ui/ProjectCard.vue'
 
 import HeartIcon from 'assets/images/utils/heart.svg'
 import FollowIllustration from 'assets/images/illustrations/follow_illustration.svg'
+
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  unfollowButton: {
+    id: 'dashboard.follows.button.unfollow',
+    defaultMessage: 'Unfollow',
+  },
+})
 
 const user = await useUser()
 if (process.client) {
