@@ -185,6 +185,9 @@
   "settings.pats.label.never-used": {
     "message": "Never used"
   },
+  "settings.pats.label.scopes.read-payouts": {
+    "message": "Read payouts"
+  },
   "settings.pats.title": {
     "message": "Personal Access Tokens"
   },

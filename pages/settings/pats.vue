@@ -209,6 +209,10 @@ const messages = defineMessages({
     id: 'settings.pats.short-title',
     defaultMessage: 'PATs',
   },
+  readPayoutsScopesLabel: {
+    id: 'settings.pats.label.scopes.read-payouts"',
+    defaultMessage: 'Read payouts',
+  },
 })
 
 useHead({
