@@ -30,8 +30,18 @@
 <script setup>
 import { Checkbox, RightArrowIcon } from 'omorphia'
 
+const { formatMessage } = useVIntl()
+const formatRelativeTime = useRelativeTime()
+
+const messages = defineMessages({
+  welcomeTitle: {
+    id: 'auth.welcome.title',
+    defaultMessage: 'Welcome',
+  }
+})
+
 useHead({
-  title: 'Welcome - Modrinth',
+  title: () => `${formatMessage(messages.welcomeTitle)} - Modrinth`,
 })
 
 const subscribe = ref(true)

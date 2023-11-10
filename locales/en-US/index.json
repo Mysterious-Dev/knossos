@@ -1,4 +1,7 @@
 {
+  "auth.welcome.title": {
+    "message": "Welcome"
+  },
   "button.cancel": {
     "message": "Cancel"
   },
