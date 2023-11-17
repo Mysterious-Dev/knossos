@@ -47,6 +47,9 @@
   "label.created-at": {
     "message": "Created {ago}"
   },
+  "label.settings": {
+    "message": "Settings"
+  },
   "notification.error.title": {
     "message": "An error occurred"
   },
