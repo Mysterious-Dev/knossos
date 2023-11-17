@@ -44,11 +44,23 @@
   "input.view.list": {
     "message": "List view"
   },
+  "label.code-source": {
+    "message": "Source code"
+  },
   "label.created-at": {
     "message": "Created {ago}"
   },
+  "label.discord-invite": {
+    "message": "Discord invite"
+  },
+  "label.issue-tracker": {
+    "message": "Issue tracker"
+  },
   "label.settings": {
     "message": "Settings"
+  },
+  "label.wiki-page": {
+    "message": "Wiki page"
   },
   "notification.error.title": {
     "message": "An error occurred"
