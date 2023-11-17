@@ -147,8 +147,6 @@ useHead({
 const cosmetics = useCosmetics()
 const tags = useTags()
 
-const searchDisplayMode = ref(cosmetics.searchDisplayMode)
-
 const listTypes = computed(() => {
   const types = tags.projectTypes.map((type) => {
     return {
