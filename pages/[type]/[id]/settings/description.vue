@@ -53,6 +53,23 @@ import Chips from '~/components/ui/Chips.vue'
 import SaveIcon from '~/assets/images/utils/save.svg'
 import { renderHighlightedString } from '~/helpers/highlight.js'
 
+const description = ref(this.project.body)
+const bodyViewMode = ref('source')
+
+const patchData = computed(() => {
+  const data = {}
+
+  if (this.description !== this.project.body) {
+    data.body = this.description
+  }
+
+  return data
+})
+
+const hasChanges = computed(() => {
+  return Object.keys(this.patchData).length > 0
+})
+
 export default defineNuxtComponent({
   components: {
     Chips,
@@ -93,23 +110,11 @@ export default defineNuxtComponent({
   },
   data() {
     return {
-      description: this.project.body,
-      bodyViewMode: 'source',
+      
     }
   },
   computed: {
-    patchData() {
-      const data = {}
-
-      if (this.description !== this.project.body) {
-        data.body = this.description
-      }
-
-      return data
-    },
-    hasChanges() {
-      return Object.keys(this.patchData).length > 0
-    },
+    
   },
   created() {
     this.EDIT_BODY = 1 << 3
