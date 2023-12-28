@@ -1,4 +1,10 @@
 {
+  "auth.authorize.button.authorize": {
+    "message": "Authorize"
+  },
+  "auth.authorize.title": {
+    "message": "Authorize {name}"
+  },
   "button.cancel": {
     "message": "Cancel"
   },

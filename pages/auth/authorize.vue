@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="title">
-        <h1>Authorize {{ app.name }}</h1>
+        <h1>{{ formatMessage(messages.title, { name: app.name }) }}</h1>
       </div>
       <div class="auth-info">
         <div class="scope-heading">
@@ -48,7 +48,7 @@
         </Button>
         <Button class="wide-button" color="primary" large :action="onAuthorize" :disabled="pending">
           <CheckIcon />
-          Authorize
+          {{ formatMessage(messages.authorizeButton) }}
         </Button>
       </div>
       <div class="redirection-notice">
@@ -66,6 +66,19 @@ import { Button, XIcon, CheckIcon, Avatar } from 'omorphia'
 import { useBaseFetch } from '@/composables/fetch.js'
 import { useAuth } from '@/composables/auth.js'
 import { getScopeDefinitions } from '@/utils/auth/scopes.ts'
+
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  title: {
+    id: 'auth.authorize.title',
+    defaultMessage: 'Authorize {name}',
+  },
+  authorizeButton: {
+    id: 'auth.authorize.button.authorize',
+    defaultMessage: 'Authorize',
+  },
+})
 
 const data = useNuxtApp()
 
