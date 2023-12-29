@@ -158,7 +158,7 @@ const onAuthorize = async () => {
   } catch (error) {
     data.$notify({
       group: 'main',
-      title: 'An error occurred',
+      title: formatMessage(commonMessages.errorNotificationTitle),
       text: err.data ? err.data.description : err,
       type: 'error',
     })
