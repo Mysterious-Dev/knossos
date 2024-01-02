@@ -50,7 +50,7 @@
   "label.code-source": {
     "message": "Source code"
   },
-  "label.created-at": {
+  "label.created-ago": {
     "message": "Created {ago}"
   },
   "label.discord-invite": {
