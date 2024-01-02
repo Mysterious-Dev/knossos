@@ -11,8 +11,8 @@ export const commonMessages = defineMessages({
     id: 'button.continue',
     defaultMessage: 'Continue',
   },
-  createdAtLabel: {
-    id: 'label.created-at',
+  createdAgoLabel: {
+    id: 'label.created-ago',
     defaultMessage: 'Created {ago}',
   },
   dateAtTimeTooltip: {
