@@ -140,6 +140,13 @@
 <script>
 import { Multiselect } from 'vue-multiselect'
 
+const messages = defineMessages({
+  indexTitle: {
+    id: 'settings.index.title',
+    defaultMessage: 'Display settings',
+  },
+})
+
 export default defineNuxtComponent({
   components: {
     Multiselect,
@@ -147,8 +154,9 @@ export default defineNuxtComponent({
   setup() {
     const cosmetics = useCosmetics()
     const tags = useTags()
+    const { formatMessage } = useVIntl()
 
-    return { cosmetics, tags }
+    return { cosmetics, tags, formatMessage, messages }
   },
   data() {
     return {
@@ -156,7 +164,7 @@ export default defineNuxtComponent({
     }
   },
   head: {
-    title: 'Display settings - Modrinth',
+    title: `${this.formatMessage(messages.indexTitle)} - Modrinth`,
   },
   computed: {
     listTypes() {
