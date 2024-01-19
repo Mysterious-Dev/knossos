@@ -243,8 +243,17 @@ definePageMeta({
   middleware: 'auth',
 })
 
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  applicationsTitle: {
+    id: 'settings.applications.title',
+    defaultMessage: 'Applications',
+  },
+})
+
 useHead({
-  title: 'Applications - Modrinth',
+  title: () => `${formatMessage(messages.applicationsTitle)} - Modrinth`,
 })
 
 const data = useNuxtApp()
@@ -378,7 +387,7 @@ async function createApp() {
   } catch (err) {
     data.$notify({
       group: 'main',
-      title: 'An error occurred',
+      title: formatMessage(commonMessages.errorNotificationTitle),
       text: err.data ? err.data.description : err,
       type: 'error',
     })
@@ -447,7 +456,7 @@ async function editApp() {
   } catch (err) {
     data.$notify({
       group: 'main',
-      title: 'An error occurred',
+      title: formatMessage(commonMessages.errorNotificationTitle),
       text: err.data ? err.data.description : err,
       type: 'error',
     })
@@ -471,7 +480,7 @@ async function removeApp() {
   } catch (err) {
     data.$notify({
       group: 'main',
-      title: 'An error occurred',
+      title: formatMessage(commonMessages.errorNotificationTitle),
       text: err.data ? err.data.description : err,
       type: 'error',
     })

@@ -407,6 +407,9 @@
   "scopes.versionWrite.label": {
     "message": "Write versions"
   },
+  "settings.applications.title": {
+    "message": "Applications"
+  },
   "settings.language.categories.auto": {
     "message": "Automatic"
   },
