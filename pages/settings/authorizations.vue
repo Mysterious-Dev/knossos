@@ -7,7 +7,7 @@
       proceed-label="Revoke"
       @proceed="revokeApp(revokingId)"
     />
-    <h2>Authorizations</h2>
+    <h2>{{ formatMessage(messages.authorizationsTitle) }}</h2>
     <p>
       When you authorize an application with your Modrinth account, you grant it access to your
       account. You can manage and review access to your account here at any time.
@@ -96,12 +96,21 @@ const { scopesToDefinitions } = useScopes()
 
 const revokingId = ref(null)
 
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  authorizationsTitle: {
+    id: 'settings.authorizations.title',
+    defaultMessage: 'Authorizations',
+  },
+})
+
 definePageMeta({
   middleware: 'auth',
 })
 
 useHead({
-  title: 'Authorizations - Modrinth',
+  title: () => `${formatMessage(messages.authorizationsTitle)} - Modrinth`,
 })
 
 const { data: usersApps, refresh } = await useAsyncData('userAuthorizations', () =>
