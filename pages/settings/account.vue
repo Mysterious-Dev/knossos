@@ -2,7 +2,7 @@
   <div>
     <ModalConfirm
       ref="modal_confirm"
-      title="Are you sure you want to delete your account?"
+      :title="formatMessage(deleteModalMessages.title)"
       description="This will **immediately delete all of your user data and follows**. This will not delete your projects. Deleting your account cannot be reversed.<br><br>If you need help with your account, get support on the [Modrinth Discord](https://discord.modrinth.com)."
       proceed-label="Delete this account"
       :confirmation-text="auth.user.username"
@@ -422,8 +422,28 @@ import GitLabIcon from 'assets/icons/auth/sso-gitlab.svg'
 import ModalConfirm from '~/components/ui/ModalConfirm.vue'
 import Modal from '~/components/ui/Modal.vue'
 
+const { formatMessage } = useVIntl()
+
+const deleteModalMessages = defineMessages({
+  title: {
+    id: 'settings.account.modal.delete.title',
+    defaultMessage: 'Are you sure you want to delete your account?',
+  },
+  description: {
+    id: 'settings.account.modal.delete.description',
+    defaultMessage: 'This will **immediately delete all of your user data and follows**. This will not delete your projects. Deleting your account cannot be reversed.<br><br>If you need help with your account, get support on the [Modrinth Discord](https://discord.modrinth.com).'
+  }
+})
+
+const messages = defineMessages({
+  title: {
+    id: 'settings.account.title',
+    defaultMessage: 'Account settings',
+  },
+})
+
 useHead({
-  title: 'Account settings - Modrinth',
+  title: () => `${formatMessage(messages.title)} - Modrinth`,
 })
 
 definePageMeta({
