@@ -141,8 +141,17 @@
 import { Multiselect } from 'vue-multiselect'
 import { formatProjectType } from '~/plugins/shorthands.js'
 
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  title: {
+    id: 'settings.index.title',
+    defaultMessage: 'Display settings',
+  },
+})
+
 useHead({
-  title: 'Display settings - Modrinth',
+  title: `${formatMessage(messages.title)} - Modrinth`,
 })
 
 const cosmetics = useCosmetics()
