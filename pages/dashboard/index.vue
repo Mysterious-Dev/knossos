@@ -115,8 +115,17 @@ import Avatar from '~/components/ui/Avatar.vue'
 import NotificationItem from '~/components/ui/NotificationItem.vue'
 import { fetchExtraNotificationData, groupNotifications } from '~/helpers/notifications.js'
 
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  title: {
+    id: 'dashboard.index.title',
+    defaultMessage: 'Dashboard',
+  },
+})
+
 useHead({
-  title: 'Dashboard - Modrinth',
+  title: () => `${formatMessage(messages.title)} - Modrinth`,
 })
 
 const auth = await useAuth()
