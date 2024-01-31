@@ -329,39 +329,32 @@ useSeoMeta({
   ogTitle: title,
   ogDescription: description,
 })
-</script>
 
-<script>
-export default defineNuxtComponent({
-  data() {
-    return {
-      expandedGalleryItem: null,
-      expandedGalleryIndex: 0,
-      zoomedIn: false,
+const expandedGalleryItem = ref(null)
+const expandedGalleryIndex = ref(0)
+const zoomedIn = ref(false)
 
-      deleteIndex: -1,
+const deleteIndex = ref(-1)
 
-      editIndex: -1,
-      editTitle: '',
-      editDescription: '',
-      editFeatured: false,
-      editOrder: null,
-      editFile: null,
-      previewImage: null,
-      shouldPreventActions: false,
-    }
-  },
-  computed: {
-    acceptFileTypes() {
-      return 'image/png,image/jpeg,image/gif,image/webp,.png,.jpeg,.gif,.webp'
-    },
-  },
-  mounted() {
-    this._keyListener = function (e) {
-      if (this.expandedGalleryItem) {
+const editIndex = ref(-1)
+const editTitle = ref('')
+const editDescription = ref('')
+const editFeatured = ref(false)
+const editOrder = ref(null)
+const editFile = ref(null)
+const previewImage = ref(null)
+const shouldPreventActions = ref(false)
+
+const acceptFileTypes = computed(() => {
+  return 'image/png,image/jpeg,image/gif,image/webp,.png,.jpeg,.gif,.webp'
+})
+
+onMounted(() => {
+  _keyListener = function (e) {
+      if (expandedGalleryItem.value) {
         e.preventDefault()
         if (e.key === 'Escape') {
-          this.expandedGalleryItem = null
+          expandedGalleryItem.value = null
         } else if (e.key === 'ArrowLeft') {
           this.previousImage()
         } else if (e.key === 'ArrowRight') {
@@ -370,8 +363,12 @@ export default defineNuxtComponent({
       }
     }
 
-    document.addEventListener('keydown', this._keyListener.bind(this))
-  },
+    document.addEventListener('keydown', _keyListener.bind(this))
+})
+</script>
+
+<script>
+export default defineNuxtComponent({
   methods: {
     nextImage() {
       this.expandedGalleryIndex++
