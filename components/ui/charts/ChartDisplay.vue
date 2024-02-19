@@ -2,7 +2,7 @@
   <div>
     <div v-if="analytics.error.value" class="universal-card">
       <h2>
-        <span class="label__title">Error</span>
+        <span class="label__title">{{ formatMessage(commonMessages.errorLabel) }}</span>
       </h2>
       <div>
         {{ analytics.error.value }}
@@ -307,6 +307,8 @@ import { analyticsSetToCSVString, intToRgba } from '~/utils/analytics.js'
 import { UiChartsCompactChart as CompactChart, UiChartsChart as Chart } from '#components'
 
 import PaletteIcon from '~/assets/icons/palette.svg'
+
+const { formatMessage } = useVIntl()
 
 const router = useRouter()
 const theme = useTheme()

@@ -7,12 +7,21 @@
 <script setup>
 import ChartDisplay from '~/components/ui/charts/ChartDisplay.vue'
 
+const { formatMessage } = useVIntl()
+
+const messages = defineMessages({
+  title: {
+    id: 'dashboard.analytics.title',
+    defaultMessage: 'Analytics',
+  },
+})
+
 definePageMeta({
   middleware: 'auth',
 })
 
 useHead({
-  title: 'Analytics - Modrinth',
+  title: () => `${formatMessage(messages.title)} - Modrinth`,
 })
 
 const auth = await useAuth()

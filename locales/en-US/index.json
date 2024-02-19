@@ -251,6 +251,9 @@
   "collection.title": {
     "message": "{name} - Collection"
   },
+  "dashboard.analytics.title": {
+    "message": "Analytics"
+  },
   "dashboard.collections.button.create-new": {
     "message": "Create new"
   },
